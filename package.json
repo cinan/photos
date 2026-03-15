@@ -1,0 +1,25 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "type": "module",
+  "packageManager": "yarn@4.13.0+sha512.5c20ba010c99815433e5c8453112165e673f1c7948d8d2b267f4b5e52097538658388ebc9f9580656d9b75c5cc996f990f611f99304a2197d4c56d21eea370e7",
+  "scripts": {
+    "dev": "yarn clean && eleventy --serve",
+    "build": "yarn clean && NODE_ENV=production eleventy",
+    "clean": "rm -rf _site",
+    "deploy": "wrangler pages deploy _site"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.2",
+    "@11ty/eleventy-fetch": "^5.1.0",
+    "@11ty/eleventy-img": "^6.0.4",
+    "clean-css": "^5.3.3",
+    "html-minifier": "^4.0.0",
+    "js-yaml": "^4.1.0",
+    "luxon": "^3.0.0",
+    "markdown-it": "^14.1.0",
+    "slugify": "^1.6.6",
+    "uglify-js": "^3.19.3",
+    "wrangler": "^4.73.0"
+  }
+}

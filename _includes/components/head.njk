@@ -1,0 +1,44 @@
+<head>
+  <meta charset="utf-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geologica:wght,CRSV@400,1;800,1&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f4f4f4">
+
+  {% if page.url == "/" %}
+    <title>{{ settings.metadata.site_title }}</title>
+    <meta name="description" content="{{ settings.metadata.site_description or settings.metadata.site_description }}">
+  {% else %}
+    <title>{{ title }} — {{ settings.metadata.site_title }}</title>
+    <meta name="description" content="{{ description or settings.metadata.site_description }}">
+  {% endif %}
+
+  <meta property="og:title" content="{% if page.url == '/' %}{{ settings.metadata.seo.site_title or settings.metadata.site_title }}{% else %}{{ title }} — {{ settings.metadata.site_title }}{% endif %}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ settings.metadata.site_url }}{{ page.url }}">
+  <meta property="og:site_name" content="{{ settings.metadata.site_title }}">
+  <meta property="og:description" content="{{ description or settings.metadata.site_description or settings.metadata.site_description }}">
+  {% if section == "photo" and photo %}
+    {% ogImageTags photo.src, settings.metadata.site_url %}
+  {% endif %}
+
+  {% if settings.metadata.seo.no_index === true %}
+    <meta name="robots" content="noindex">
+  {% else %}
+    <link rel="canonical" href="{{ settings.metadata.site_url }}{{ page.url }}">
+  {% endif %}
+
+  {# Set theme and base styles #}
+  {% set css %}
+    {% include "assets/css/theme.css" %}
+    {% include "assets/css/base.css" %}
+    {% if section == "project" %}
+      {% include "assets/css/lightbox.css" %}
+    {% endif %}
+  {% endset %}
+
+  <style>
+    {{ css | cssmin | safe }}
+  </style>
+</head>

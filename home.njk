@@ -1,0 +1,10 @@
+---
+layout: layouts/base.njk
+section: home
+permalink: "/index.html"
+---
+<article>
+  {% set projectList = projects | limit(settings.theme.theme_features.item_output_limit or 48) %}
+  {% include "components/projectList.njk" %}
+
+</article>

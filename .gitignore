@@ -1,0 +1,10 @@
+.idea/
+node_modules/
+_site/
+.cache/
+.yarn/cache/
+.yarn/install-state.gz
+.DS_Store
+.env
+projects/
+!projects/.gitkeep

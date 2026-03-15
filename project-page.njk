@@ -1,0 +1,70 @@
+---
+pagination:
+  data: projects
+  size: 1
+  alias: project
+permalink: "{{ project.slug }}/index.html"
+layout: layouts/base.njk
+section: project
+eleventyComputed:
+  title: "{{ project.title }}"
+---
+<article>
+
+  <header class="pb--4">
+
+    <div class="grid grid--intro">
+
+      <h2 class="grid__item--span-4 mw--readable">{{ project.title }}</h1>
+
+      {% if project.description %}
+        <div class="grid__item--span-4 mw--readable markdown">{{ project.description | renderUsingMarkdown | safe }}</div>
+      {% endif %}
+
+      {% if project.year and settings.theme.theme_features.show_project_year %}
+        <p class="grid__item--span-4 mw--readable mb--0">{{ project.year }}</p>
+      {% endif %}
+
+    </div>
+
+  </header>
+
+  <section class="grid grid--project pb--3">
+    {% for image in project.images %}
+      <a href="/{{ project.slug }}/{{ image.slug }}/" class="grid__item grid__item--breakout">
+
+      {% set imagePath = "projects/" + project.slug + "/" + image.name %}
+
+      {# Make an array of the enabled image formats from settings.yaml #}
+      {% set outputFormats = [] %}
+      {% for format, i in settings.images %}
+        {% if i.enabled === true %}
+          {{ '' if outputFormats.push(format) }}
+        {% endif %}
+      {% endfor %}
+
+      {% set params =
+        {
+          "src": imagePath,
+          "alt": project.title,
+          "loadingType": "eager" if loop.first else "lazy",
+          "viewportSizes": "(min-width: 1140px) 70vw, (min-width: 540px) 90vw, 100vw",
+          "outputWidths": [
+            settings.config.image_width_sm,
+            settings.config.image_width_md,
+            settings.config.image_width_lg
+          ],
+          "outputFormats": outputFormats,
+          "outputQualityJpeg": settings.images.jpeg.quality,
+          "outputQualityWebp": settings.images.webp.quality,
+          "outputQualityAvif": settings.images.avif.quality
+        }
+      %}
+
+      {% generateImage params %}
+
+      </a>
+    {% endfor %}
+  </section>
+
+</article>

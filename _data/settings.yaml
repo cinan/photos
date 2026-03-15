@@ -1,0 +1,42 @@
+# Portfolio Settings
+# Site metadata
+metadata:
+  site_url: 'https://franks.camera'
+  site_title: Frank’s Camera
+  site_subtitle_1:
+  site_subtitle_2:
+  site_description: A photography portfolio.
+  site_email: 'hello@franks.camera'
+  site_social_url: 'https://github.com/cinan/photos'
+  site_social_title: GitHub
+  seo:
+    no_index: false
+# theme customization
+theme:
+  theme_features:
+    item_output_limit: 48
+    show_project_year: true
+    show_project_grid_titles: true
+images:
+  avif:
+    enabled: false # WebP is preferred
+    quality: 75
+  webp:
+    enabled: true
+    quality: 75
+  jpeg:
+    enabled: true
+    quality: 75
+# Locale and translations
+i18n:
+  site_language: en
+# Internal config
+config:
+  # homepage
+  image_grid_width_sm: 640
+  image_grid_width_md: 1080
+  image_grid_width_lg: 1800
+  # project images
+  image_width_sm: 1080
+  image_width_md: 1800
+  image_width_lg: 2400

@@ -1,0 +1,16 @@
+<header class="p--2 header--main">
+	<div class="grid grid--header">
+
+		<a href="{{ '/' | url }}" class="grid__item link-nostyle">
+          <h1>{{ settings.metadata.site_title }}</h1>
+		</a>
+
+		{% if settings.metadata.site_subtitle_1 %}
+			<span class="grid__item">{{ settings.metadata.site_subtitle_1 }}</span>
+		{% endif %}
+
+		{% if settings.metadata.site_subtitle_2 %}
+			<span class="grid__item">{{ settings.metadata.site_subtitle_2 }}</span>
+		{% endif %}
+	</div>
+</header>

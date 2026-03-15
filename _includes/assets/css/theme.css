@@ -1,0 +1,15 @@
+:root {
+	--space-scale: 100;
+	--color-text: #2c1010;
+	--color-text-header: #a43e3e;
+	--color-text-header-inverted: #3ea1a4;
+	--color-text-highlight: #b83d2e;
+	--color-background: #f4f4f4;
+	--font: Geologica, sans-serif;
+    --font-weight: 400;
+    --font-weight-header: 800;
+    --font-scale: 100;
+	--line-height-scale: 100;
+	--link-underline: underline;
+    --transition-time: 300ms;
+}

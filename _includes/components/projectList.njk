@@ -1,0 +1,67 @@
+{% if projectList | length %}
+
+	<section class="columns columns--projects">
+
+		{% for project in projectList | reverse %}
+
+			<div class="columns__item mb--1">
+
+				<a href="/{{ project.slug }}/">
+
+					<figure>
+
+						{# Make an array of the enabled image formats from settings.yaml #}
+						{% set outputFormats = [] %}
+						{% for format, i in settings.images %}
+							{% if i.enabled === true %}
+								{{ '' if outputFormats.push(format) }}
+							{% endif %}
+						{% endfor %}
+
+						{% set coverImage = "projects/" + project.slug + "/" + project.cover.name %}
+
+						{% set params =
+							{
+								"src": coverImage,
+								"alt": project.title,
+								"loadingType": "eager" if (loop.first and section != "project") else "lazy",
+								"viewportSizes": "(min-width: 1140px) 22vw, (min-width: 540px) 45vw, 85vw",
+								"outputWidths": [
+									settings.config.image_grid_width_sm,
+									settings.config.image_grid_width_md,
+									settings.config.image_grid_width_lg
+								],
+								"outputFormats": outputFormats,
+								"outputQualityJpeg": settings.images.jpeg.quality,
+								"outputQualityWebp": settings.images.webp.quality,
+								"outputQualityAvif": settings.images.avif.quality
+							}
+						%}
+
+						{% generateImage params %}
+
+						<figcaption class="pb--1{% if settings.theme.theme_features.show_project_grid_titles === false %} hide{% endif %}">
+
+							<span class="text--small arrow arrow--right">{{ project.title }}</span>
+
+						</figcaption>
+
+					</figure>
+
+				</a>
+
+			</div>
+
+		{% endfor %}
+
+	</section>
+
+{% else %}
+
+	<section>
+
+		<p>There are no projects here yet.</p>
+
+	</section>
+
+{% endif %}

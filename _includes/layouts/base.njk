@@ -1,0 +1,32 @@
+<!doctype html>
+<html {% if section %} data-current="{{ section }}"{% endif %} lang="{{ settings.i18n.site_language or "en" }}">
+
+	{% include "components/head.njk" %}
+
+	<body class="grid grid--body">
+
+		{% include "components/header.njk" %}
+
+		<main class="p--2 pb--8">
+			{{ content | safe }}
+		</main>
+
+		{% include "components/footer.njk" %}
+
+		{# Minify and output the core site JS #}
+		{% set js %}
+    	{% include "assets/js/global.js" %}
+        {% if section == "project" %}
+            {% include "assets/js/lightbox.js" %}
+        {% endif %}
+  	{% endset %}
+ 		<script>{{ js | jsmin | safe }}</script>
+
+		{# Fallback for image visibility when JS is unavailable #}
+		<noscript>
+			<style>img { opacity: 1; }</style>
+		</noscript>
+
+	</body>
+
+</html>
