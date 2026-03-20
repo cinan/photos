@@ -199,7 +199,7 @@ a[href].link-nostyle {
 	text-decoration: none;
 }
 
-h1,h2 {
+h1,h2,h3 {
 	font-size: calc(var(--font-size-base) * var(--font-scale) / 100);
 	font-weight: var(--font-weight-header);
 	line-height: 120%;
@@ -220,6 +220,11 @@ h1 {
 h2 {
 	font-size: calc(var(--font-size-base) * var(--h2-scale, 2));
 	color: var(--color-text);
+}
+
+h3 {
+	font-weight: var(--font-weight);
+	color: var(--color-text-header);
 }
 
 p {
