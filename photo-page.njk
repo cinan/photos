@@ -37,11 +37,13 @@ eleventyComputed:
         "src": imagePath,
         "alt": photo.projectTitle,
         "loadingType": "eager",
-        "viewportSizes": "(min-width: 1140px) 70vw, (min-width: 540px) 90vw, 100vw",
+        "viewportSizes": "100vw",
         "outputWidths": [
-          settings.config.image_width_sm,
-          settings.config.image_width_md,
-          settings.config.image_width_lg
+          settings.config.image_width_phone,
+          settings.config.image_width_tablet,
+          settings.config.image_width_desktop,
+          settings.config.image_width_retina,
+          settings.config.image_width_max
         ],
         "outputFormats": outputFormats,
         "outputQualityJpeg": settings.images.jpeg.quality,

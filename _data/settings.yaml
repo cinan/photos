@@ -37,6 +37,8 @@ config:
   image_grid_width_md: 1080
   image_grid_width_lg: 1800
   # project images
-  image_width_sm: 1080
-  image_width_md: 1800
-  image_width_lg: 2400
+  image_width_phone: 1080
+  image_width_tablet: 1800
+  image_width_desktop: 2400
+  image_width_retina: 3200
+  image_width_max: 4800
