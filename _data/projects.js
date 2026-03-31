@@ -29,7 +29,7 @@ export default function() {
 
       return {
         slug: d.name,
-        title: meta.title || d.name.charAt(0).toUpperCase() + d.name.slice(1).replace(/[-_]/g, ' '),
+        title: meta.title || d.name.replace(/[-_]/g, ' ').replace(/\b\w/g, c => c.toUpperCase()),
         description: meta.description || '',
         year: meta.year || '',
         cover: images[0] || null,
