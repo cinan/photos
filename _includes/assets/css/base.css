@@ -94,15 +94,9 @@ body {
 
 .columns {
 	text-align: left;
-  -moz-column-count: 1;
-       column-count: 1;
-	-moz-column-width: auto;
-	     column-width: auto;
-}
-
-.columns__item {
-  -moz-column-break-inside: avoid;
-       break-inside: avoid;
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: var(--space) calc(var(--space) * 1.25);
 }
 
 /* Color scheme toggle */
@@ -167,6 +161,7 @@ a picture::after {
 
 a img {
 	transition: filter var(--transition-time) ease;
+	will-change: filter;
 }
 
 @media (min-width: 840px) {
@@ -295,10 +290,7 @@ img {
 	}
 
 	.columns {
-		-moz-column-gap: calc(var(--space) * 1.25);
-		     column-gap: calc(var(--space) * 1.25);
-		-moz-column-count: 2;
-       column-count: 2;
+		grid-template-columns: repeat(2, 1fr);
 	}
 
 	.grid--project {
@@ -373,8 +365,7 @@ img {
 	}
 
 	.columns {
-		-moz-column-count: 3;
-       column-count: 3;
+		grid-template-columns: repeat(3, 1fr);
 	}
 
 	[data-orientation],
