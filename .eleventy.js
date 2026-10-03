@@ -41,7 +41,9 @@ export default function(eleventyConfig) {
       outputFormats = ["jpeg"],
       outputQualityJpeg = 75,
       outputQualityWebp = 75,
-      outputQualityAvif = 75
+      outputEffortWebp = 4,
+      outputQualityAvif = 75,
+      outputEffortAvif = 4
     } = params;
 
     // Remove preceding slash from image path if it exists
@@ -50,8 +52,8 @@ export default function(eleventyConfig) {
     let metadata = await Image(src, {
       widths: outputWidths,
       sharpJpegOptions: { quality: outputQualityJpeg },
-      sharpWebpOptions: { quality: outputQualityWebp },
-      sharpAvifOptions: { quality: outputQualityAvif },
+      sharpWebpOptions: { quality: outputQualityWebp, effort: outputEffortWebp },
+      sharpAvifOptions: { quality: outputQualityAvif, effort: outputEffortAvif },
       formats: outputFormats,
       urlPath: "/assets/images/",
       outputDir: "./.cache/eleventy-img/",

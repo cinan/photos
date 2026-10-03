@@ -19,13 +19,15 @@ theme:
     show_project_grid_titles: true
 images:
   avif:
-    enabled: false # WebP is preferred
-    quality: 75
+    enabled: true 
+    quality: 60
+    effort: 0
   webp:
-    enabled: true
-    quality: 75
+    enabled: false # Prefer Avif
+    quality: 80
+    effort: 1
   jpeg:
-    enabled: true
+    enabled: true # Fallback
     quality: 75
 # Locale and translations
 i18n:
